@@ -13,6 +13,6 @@ RUN apt-get update && apt-get install -y jenkins
 EXPOSE 8080
 
 # To start Jenkins
-CMD ["jenkins"]
+CMD ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
 
 
