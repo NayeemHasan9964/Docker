@@ -1,5 +1,6 @@
-FROM httpd:2.4
+FROM ubuntu:22.04
 
-COPY index.html /usr/local/apache2/htdocs
+RUN apt update && apt upgrade && apt install open-jdk-11 -y
 
-EXPOSE 80
+
+
