@@ -16,8 +16,11 @@ COPY --chown=${User}:${Group} . ${homeDir}
 
 # Cpy the Nop.Web project files
 COPY /SampleWebPage/Docker/nopcommerce /nopcommerce 
+
 # Set environment variable for Kestrel server binding
 ENV ASPNETCORE_URLS="http://0.0.0.0:5000"
+
+USER ${User}
 
 # Expose port
 EXPOSE 5000
