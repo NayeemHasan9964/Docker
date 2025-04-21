@@ -9,11 +9,13 @@ ARG homeDir=/nopcommerce
 # Set the working directory
 WORKDIR ${homeDir}
 
+RUN groupadd -r ${Group} && useradd -r -g ${Group} ${User}
+
 # Copy files and assign ownership
 COPY --chown=${User}:${Group} . ${homeDir}
 
 # Cpy the Nop.Web project files
-COPY . /nopcommerce 
+COPY /SampleWebPage/Docker/nopcommerce /nopcommerce 
 # Set environment variable for Kestrel server binding
 ENV ASPNETCORE_URLS="http://0.0.0.0:5000"
 
