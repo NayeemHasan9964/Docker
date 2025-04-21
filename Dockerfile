@@ -1,10 +1,10 @@
-FROM ubuntu:22.04
-
-# To Add .NET repsoitary
-# RUN add-apt-repository ppa:dotnet/backports
-
-# To Update and download .NETcore runtime
-RUN apt-get update && apt-get install -y aspnetcore-runtime-9.0 nginx dotnet-sdk-6.0
+FROM  mcr.microsoft.com/dotnet/sdk:9.0
+LABEL Name="nopCommerce"
+COPY nopcommerce /nopcommerce 
+ENV ASPNETCORE_URLS="http://0.0.0.0:5000"
+EXPOSE 5000
+WORKDIR /nopcommerce
+CMD [ "dotnet" "Nop.Web.dll" ]
 
 
 
