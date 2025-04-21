@@ -4,7 +4,7 @@ COPY . /nopcommerce
 ENV ASPNETCORE_URLS="http://0.0.0.0:5000"
 EXPOSE 5000
 WORKDIR /nopcommerce
-CMD [ "dotnet" "Nop.Web.dll" ]
+CMD [ "dotnet","Nop.Web.dll" ]
 
 
 
