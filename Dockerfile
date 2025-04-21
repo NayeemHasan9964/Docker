@@ -1,11 +1,27 @@
-# NopCommerce Dockerfile
-FROM  mcr.microsoft.com/dotnet/sdk:9.0
+FROM mcr.microsoft.com/dotnet/sdk:9.0
 LABEL Name="nopCommerce"
-COPY . /nopcommerce 
+
+# Arguments for user and group
+ARG User=nop
+ARG Group=nop
+ARG homeDir=/nopcommerce
+
+# Set the working directory
+WORKDIR ${homeDir}
+
+# Copy files and assign ownership
+COPY --chown=${User}:${Group} . ${homeDir}
+
+
+# Set environment variable for Kestrel server binding
 ENV ASPNETCORE_URLS="http://0.0.0.0:5000"
+
+# Expose port
 EXPOSE 5000
-WORKDIR /nopcommerce
-CMD [ "dotnet","Nop.Web.dll" ]
+
+# Start the nopCommerce application
+CMD [ "dotnet", "Nop.Web.dll" ]
+
 
 
 
