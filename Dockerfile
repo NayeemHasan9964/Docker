@@ -12,7 +12,8 @@ WORKDIR ${homeDir}
 # Copy files and assign ownership
 COPY --chown=${User}:${Group} . ${homeDir}
 
-
+# Cpy the Nop.Web project files
+COPY . /nopcommerce 
 # Set environment variable for Kestrel server binding
 ENV ASPNETCORE_URLS="http://0.0.0.0:5000"
 
